@@ -18,9 +18,9 @@
    - Обеспечивает интеграцию с внешними сервисами.
 
 ## Мой любимый фильм
-[Название фильма](https://www.kinopoisk.ru/film/476/?utm_referrer=www.google.com) - Мой любимый фильм, который вдохновляет меня.
+[Назад в будущее](https://www.kinopoisk.ru/film/476/?utm_referrer=www.google.com) - Мой любимый фильм, который вдохновляет меня.
 
-![Пример изображения](https://www.kinopoisk.ru/film/476/?utm_referrer=www.google.com)
+![Пример изображения](https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/e6140838-5243-42d4-9b28-5667fd1c1ff2/300x)
 
 ## Таблица 3x3
 | Заголовок 1 | Заголовок 2 | Заголовок 3 |
