@@ -1,0 +1,93 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+
+using namespace std;
+
+struct Exam {
+    string discipline;
+    string teacher;
+    int lectureHours;
+    int practicalHours;
+    int groupNumber;
+};
+
+bool compareByDiscipline(const Exam &a, const Exam &b) {
+    return a.discipline < b.discipline;
+}
+
+bool compareByHours(const Exam &a, const Exam &b) {
+    return (a.lectureHours + a.practicalHours) < (b.lectureHours + b.practicalHours);
+}
+
+bool compareByTeacher(const Exam &a, const Exam &b) {
+    return a.teacher < b.teacher;
+}
+
+bool compareByGroup(const Exam &a, const Exam &b) {
+    return a.groupNumber < b.groupNumber;
+}
+
+int main() {
+    vector<Exam> exams;
+    int numExams;
+
+    // Ввод информации об экзаменах
+    cout << "Введите количество экзаменов: ";
+    cin >> numExams;
+
+    for (int i = 0; i < numExams; i++) {
+        Exam exam;
+        cout << "Введите информацию об экзамене №" << (i + 1) << ":" << endl;
+        cin.get();
+        cout << "Название дисциплины: ";
+        getline(cin, exam.discipline);
+        cout << "ФИО преподавателя: ";
+        getline(cin, exam.teacher);
+        cout << "Объем лекционных часов: ";
+        cin >> exam.lectureHours;
+        cout << "Объем часов практических занятий: ";
+        cin >> exam.practicalHours;
+        cout << "Номер учебной группы: ";
+        cin >> exam.groupNumber;
+
+        exams.push_back(exam);
+    }
+
+    // Сортировка по выбранному критерию
+    int sortOption;
+    cout << "\nВыберите критерий сортировки:\n";
+    cout << "1. По названию дисциплины\n";
+    cout << "2. По общему объему часов\n";
+    cout << "3. По ФИО преподавателя\n";
+    cout << "4. По номеру учебной группы\n";
+    cin >> sortOption;
+    
+    if (sortOption == 1) {
+        sort(exams.begin(), exams.end(), compareByDiscipline);  
+    }
+    else if (sortOption == 2) {
+        sort(exams.begin(), exams.end(), compareByHours);  
+    }
+    else if (sortOption == 3) {
+        sort(exams.begin(), exams.end(), compareByTeacher);  
+    }
+    else if (sortOption == 4) {
+        sort(exams.begin(), exams.end(), compareByGroup);  
+    }
+    else {
+        cout << "Некорректный выбор сортировки.\n";
+        return 1;
+    }
+
+    // Вывод отсортированных данных
+    cout << "\nОтсортированные данные об экзаменах:\n";
+    for (const auto &exam : exams) {
+        cout << "Дисциплина: " << exam.discipline << ", Преподаватель: " << exam.teacher
+                  << ", Общий объем часов: " << (exam.lectureHours + exam.practicalHours)
+                  << ", Группа: " << exam.groupNumber << "\n";
+    }
+
+    return 0;
+}
